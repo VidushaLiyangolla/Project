@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap-icons";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.dialog-container .mat-dialog-container {
+  width: 500px;
+  padding: 0;
+}
+
+@keyframes glow {
+  0% {
+    background: transparent;
+  }
+  25% {
+    background: rgb(220, 220, 255);
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+.new-item {
+  animation-duration: 5s;
+  animation-name: glow;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+}

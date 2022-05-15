@@ -1,0 +1,56 @@
+<div class="w-100 d-flex justify-content-between mx-0 mb-3">
+  <div class="input-group w-25">
+    <input type="text" class="form-control" aria-label="Filter keyword" placeholder="Filter"  [formControl]="filter" />
+    <button class="btn btn-outline-secondary" id="filter" (click)="filter.setValue('')"><span class="bi bi-x-lg"></span></button>
+  </div>
+  <button class="btn btn-success" (click)="openDialog(null)"><i class="bi bi-plus-lg" ></i> New User</button>
+</div>
+
+<div class="row mx-0">
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>User ID</th>
+      <th>Name</th>
+      <th>Account No.</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Options</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngIf="!progress && users.length === 0">
+      <td colspan="5">
+        <span class="text-secondary fst-italic">No data found..!</span>
+      </td>
+    </tr>
+    <tr *ngIf="progress">
+      <td colspan="5">
+        <div class="d-flex justify-content-center my-5">
+          <span class="spinner-border" role="status"></span>
+        </div>
+      </td>
+    </tr>
+    <tr *ngFor="let user of filteredUsers" [class.new-item]="user.new">
+      <td>{{ user.id }}</td>
+      <td>{{ user.firstName + ' ' + user.lastName }}</td>
+      <td>{{ user.accountNo }}</td>
+      <td>{{ user.address }}</td>
+      <td>
+        <span *ngIf="user.phone">{{ user.phone }}</span>
+        <span *ngIf="!user.phone" class="text-secondary fst-italic">Not Available</span>
+      </td>
+      <td style="width: 125px">
+        <button class="btn btn-light rounded-circle mx-1 text-primary" (click)="openDialog(user)"><i class="bi bi-pencil"></i></button>
+        <button class="btn btn-light rounded-circle mx-1 text-danger" (click)="deleteUser(user)"><i class="bi bi-trash"></i></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
+
+</div>

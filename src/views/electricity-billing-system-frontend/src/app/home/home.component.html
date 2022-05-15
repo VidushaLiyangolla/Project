@@ -1,0 +1,14 @@
+<div class="container-fluid pt-2">
+
+  <h1 class="h1 fw-bold">Electricity Billing System</h1>
+
+  <div class="mx-0 px-0 nav-bar">
+    <a routerLink="/user" class="nav-item" [class.nav-item-active]="currentRoute === '/user'">Users</a>
+    <a routerLink="/payment-method" class="nav-item" [class.nav-item-active]="currentRoute === '/payment-method'">Payment Methods</a>
+    <a routerLink="/billing" class="nav-item" [class.nav-item-active]="currentRoute === '/billing'">Billing</a>
+    <a routerLink="/payment" class="nav-item" [class.nav-item-active]="currentRoute === '/payment'">Payment</a>
+  </div>
+
+  <router-outlet></router-outlet>
+
+</div>
